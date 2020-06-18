@@ -8,5 +8,6 @@ management:
       exposure:
         include: "*"
 
-springdoc.swagger-ui.path: /swagger-ui.html
-        
+springdoc.swagger-ui:
+  path: /swagger-ui.html
+  config-url: /v3/api-docs/swagger-config#/t-converter-controller/convert
