@@ -1,0 +1,12 @@
+server:
+  port: 8080
+  
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: "*"
+
+springdoc.swagger-ui.path: /swagger-ui.html
+        
