@@ -28,7 +28,7 @@ public class TConverterController {
     		return Result.INVALID;
     	}
         Optional<Double> result = converterService.convert(dto.getFrom(), dto.getTo(), dto.getInput());
-        return result.map(value -> value.equals(dto.getResponse())?Result.CORRECT:Result.INCORRECT).orElse(Result.INVALID);
+        return result.map(value -> value.equals(ConverterService.round(dto.getResponse()))?Result.CORRECT:Result.INCORRECT).orElse(Result.INVALID);
     }
 }
 

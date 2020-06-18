@@ -59,7 +59,7 @@ public class ConverterService implements IConverter {
     	return new StringBuilder(from.name()).append("_").append(to.name()).toString();
     }
     
-    private Double round(Double value) {
+    public static Double round(Double value) {
     	return Math.round(value.doubleValue() * 10) / 10.0;
     }
 }
