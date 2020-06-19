@@ -1,5 +1,7 @@
 package com.cpoluru.tconverter.service;
 
+import static com.cpoluru.tconverter.service.IConverter.round;
+
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
@@ -9,7 +11,10 @@ import org.springframework.stereotype.Component;
 import com.cpoluru.tconverter.domain.Unit;
 import com.google.common.collect.ImmutableMap;
 
+import lombok.extern.log4j.Log4j2;
+
 @Component
+@Log4j2
 public class ConverterService implements IConverter {
 	
 	private static final Map<String, Function<Double, Double>> formulae;
@@ -49,17 +54,13 @@ public class ConverterService implements IConverter {
     	if(from == to) {
     		return Optional.ofNullable(value);
     	}
-    	Optional<Double> result = Optional.ofNullable(formulae.get(from +"_" + to)).map(f -> round(f.apply(value)));
-    	result.ifPresent(v -> System.out.println(round(v)));
+    	Optional<Double> result = Optional.ofNullable(formulae.get(getKey(from, to))).map(f -> round(f.apply(value)));
+    	result.ifPresent(v -> log.info("Result:{}", v));
     	
     	return result;
     }
     
     private static String getKey(Unit from, Unit to) {
     	return new StringBuilder(from.name()).append("_").append(to.name()).toString();
-    }
-    
-    public static Double round(Double value) {
-    	return Math.round(value.doubleValue() * 10) / 10.0;
     }
 }

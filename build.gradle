@@ -33,6 +33,8 @@ dependencies {
 	
 	testCompileOnly("org.projectlombok:lombok:$lombokVersion")
 	testAnnotationProcessor("org.projectlombok:lombok:$lombokVersion")
+	
+	compileOnly("org.springframework.boot:spring-boot-devtools")
 }
 
 test {

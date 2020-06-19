@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cpoluru.tconverter.domain.ConverterDTO;
 import com.cpoluru.tconverter.service.ConverterService;
 
+import static com.cpoluru.tconverter.service.IConverter.round;
+
 @RestController()
 @RequestMapping(value = "/tconverter")
 @CrossOrigin(origins = {"*"})
@@ -28,7 +30,7 @@ public class TConverterController {
     		return Result.INVALID;
     	}
         Optional<Double> result = converterService.convert(dto.getFrom(), dto.getTo(), dto.getInput());
-        return result.map(value -> value.equals(ConverterService.round(dto.getResponse()))?Result.CORRECT:Result.INCORRECT).orElse(Result.INVALID);
+        return result.map(value -> value.equals(round(dto.getResponse()))?Result.CORRECT:Result.INCORRECT).orElse(Result.INVALID);
     }
 }
 

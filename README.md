@@ -13,4 +13,8 @@ $ ./gradlew clean build generateOpenApiDocs && java -jar build/libs/tconverter-0
 
 ## API Docs
 
-You can access the api docs [here](http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config#/t-converter-controller/convert)
+You can access the api docs [here](http://localhost:8080/swagger-ui.html)
+
+## Actuator
+
+You can access the actuator [http://localhost:8080/manage/](http://localhost:8080/manage/health)
